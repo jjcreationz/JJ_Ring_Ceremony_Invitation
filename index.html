@@ -69,7 +69,10 @@
       isolation: isolate;
     }
 
+    /* Video */
     .video-wrapper video {
+      position: relative;
+      z-index: 1;
       width: 100%;
       display: block;
       border-radius: 14px;
@@ -77,23 +80,20 @@
       max-height: 75vh;
     }
 
-    /* QR code clickable area */
+    /* TEMPORARY VISIBLE QR HOTSPOT FOR TESTING */
     .qr-hotspot {
       position: absolute;
-
-      /* Initial QR position based on desktop screenshot */
       left: 49%;
       top: 65%;
       width: 9%;
       height: 10%;
-
-      z-index: 20;
+      z-index: 10;
       display: block;
       opacity: 0;
       pointer-events: none;
       cursor: pointer;
-      background: transparent;
-      border: none;
+      background: rgba(255, 0, 0, 0.35);
+      border: 3px solid red;
       border-radius: 8px;
       -webkit-tap-highlight-color: transparent;
     }
@@ -113,20 +113,16 @@
       position: absolute;
       top: 12px;
       right: 12px;
-      z-index: 30;
-
+      z-index: 20;
       width: 42px;
       height: 42px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       border: 1px solid #ffffff70;
       border-radius: 9px;
       background: #21083fcc;
       color: white;
-
       font-size: 25px;
       cursor: pointer;
       line-height: 1;
@@ -136,7 +132,7 @@
       background: #571578;
     }
 
-    /* Actual fullscreen mode */
+    /* Fullscreen mode */
     .video-wrapper:fullscreen {
       width: 100%;
       height: 100%;
@@ -156,7 +152,7 @@
       border-radius: 0;
     }
 
-    /* Fullscreen fallback for browsers without fullscreen API */
+    /* Fullscreen fallback */
     .video-wrapper.expanded {
       position: fixed;
       inset: 0;
@@ -322,7 +318,7 @@
           Your browser does not support video playback.
         </video>
 
-        <!-- Invisible clickable QR hotspot -->
+        <!-- Clickable QR area -->
         <a
           id="qrHotspot"
           class="qr-hotspot"
@@ -423,16 +419,11 @@
     const videoWrapper = document.getElementById("videoWrapper");
     const fullscreenButton = document.getElementById("fullscreenButton");
 
-    // Keep QR hotspot active from 4 seconds until the video ends.
+    // Activate the QR hotspot from 4 seconds until the video ends.
     function updateQRHotspot() {
       const currentTime = invitationVideo.currentTime;
-      const duration = invitationVideo.duration;
 
-      if (
-        currentTime >= 4 &&
-        !invitationVideo.ended &&
-        (!Number.isFinite(duration) || currentTime < duration)
-      ) {
+      if (currentTime >= 4 && !invitationVideo.ended) {
         qrHotspot.classList.add("active");
       } else {
         qrHotspot.classList.remove("active");
@@ -446,7 +437,7 @@
     invitationVideo.addEventListener("pause", updateQRHotspot);
     invitationVideo.addEventListener("ended", updateQRHotspot);
 
-    // Fullscreen: include the video and QR hotspot together.
+    // Custom fullscreen keeps the QR overlay inside the fullscreen wrapper.
     async function toggleFullscreen() {
       try {
         if (
@@ -463,6 +454,7 @@
 
         if (videoWrapper.classList.contains("expanded")) {
           videoWrapper.classList.remove("expanded");
+          updateFullscreenButton();
           return;
         }
 
@@ -471,19 +463,18 @@
         } else if (videoWrapper.webkitRequestFullscreen) {
           videoWrapper.webkitRequestFullscreen();
         } else {
-          // Fallback: expanded page view keeps the QR overlay available.
           videoWrapper.classList.add("expanded");
         }
 
       } catch (error) {
-        // If native fullscreen is unavailable, use expanded mode.
         videoWrapper.classList.add("expanded");
       }
+
+      updateFullscreenButton();
     }
 
     fullscreenButton.addEventListener("click", toggleFullscreen);
 
-    // Update the button when fullscreen changes.
     function updateFullscreenButton() {
       const isFullscreen =
         document.fullscreenElement === videoWrapper ||
@@ -494,6 +485,7 @@
       fullscreenButton.title = isFullscreen
         ? "Exit fullscreen"
         : "Fullscreen";
+
       fullscreenButton.setAttribute(
         "aria-label",
         isFullscreen ? "Exit fullscreen" : "Open video fullscreen"
@@ -503,7 +495,6 @@
     document.addEventListener("fullscreenchange", updateFullscreenButton);
     document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
 
-    // Escape key exits the expanded fallback view.
     document.addEventListener("keydown", function(event) {
       if (
         event.key === "Escape" &&
