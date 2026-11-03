@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#42105f">
-  <meta name="description" content="You're cordially invited to JeDiDiAh's Ring Ceremony Join us for a celebration filled with love, blessings and joy.">
+  <meta name="description" content="You're cordially invited to JeDiDiAh's Ring Ceremony. Join us for a celebration filled with love, blessings and joy.">
   <title>JeDiDiAh ❤️ Ring Ceremony Invitation</title>
 
   <style>
@@ -59,7 +59,15 @@
       box-shadow: 0 15px 45px #12051e88;
     }
 
-    video {
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #21083f;
+    }
+
+    .video-wrapper video {
       width: 100%;
       display: block;
       border-radius: 14px;
@@ -67,10 +75,44 @@
       max-height: 75vh;
     }
 
+    /* Invisible clickable area over the QR code */
+    .qr-hotspot {
+      position: absolute;
+      left: 78%;
+      top: 59%;
+      width: 16%;
+      height: 11%;
+      z-index: 5;
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .qr-hotspot.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .qr-hotspot:focus-visible {
+      outline: 3px solid #e8aa36;
+      outline-offset: 3px;
+    }
+
     .video-caption {
       color: #571578;
       font-size: 15px;
       padding: 14px 5px 5px;
+      line-height: 1.6;
+    }
+
+    .video-caption small {
+      font-size: 12px;
+      color: #795b88;
     }
 
     .details {
@@ -143,6 +185,10 @@
       font-weight: bold;
     }
 
+    .share-button:hover {
+      background: #1ebc59;
+    }
+
     @media (max-width: 480px) {
       body {
         padding: 18px 12px;
@@ -172,20 +218,47 @@
       </p>
     </header>
 
+    <!-- Invitation Video -->
     <section class="video-card">
-      <video
-        controls
-        playsinline
-        preload="metadata"
-        poster="Jedi & Neelima Engagement Ring Ceremony Invitation-2.png">
-        <source src="Jedi & Neelima Engagement Ring Ceremony Invitation-2.mp4" type="video/mp4">
-        Your browser does not support video playback.
-      </video>
+
+      <div class="video-wrapper">
+
+        <video
+          id="invitationVideo"
+          controls
+          playsinline
+          preload="metadata"
+          poster="Jedi%20%26%20Neelima%20Engagement%20Ring%20Ceremony%20Invitation-2.png">
+
+          <source
+            src="Jedi%20%26%20Neelima%20Engagement%20Ring%20Ceremony%20Invitation-2.mp4"
+            type="video/mp4">
+
+          Your browser does not support video playback.
+        </video>
+
+        <!-- Clickable QR Code Hotspot -->
+        <a
+          id="qrHotspot"
+          class="qr-hotspot"
+          href="https://maps.app.goo.gl/ipyNGoS6qqLnvjbA9"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Ring Ceremony venue in Google Maps"
+          title="Tap to open the venue in Google Maps">
+        </a>
+
+      </div>
+
       <p class="video-caption">
         ❤️ Our Ring Ceremony Invitation ❤️
+        <br>
+        <small>Tap the QR code in the video to open the venue in Google Maps.</small>
       </p>
+
     </section>
 
+    <!-- Ceremony Details -->
     <section class="details">
       <h2>💍 Ring Ceremony 💍</h2>
       <p class="date">Wednesday, 25 November 2026</p>
@@ -198,6 +271,7 @@
       </p>
     </section>
 
+    <!-- Personal Invitation Message -->
     <section class="message">
       <h2>A Special Invitation ❤️</h2>
 
@@ -231,17 +305,48 @@
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
       Made with ❤️, blessings, drama and excitement
       <br>
       We can't wait to celebrate with you.
       <br>
-      <a class="share-button"
-         href="https://wa.me/?text=You're%20cordially%20invited%20to%20our%20Ring%20Ceremony%20💍❤️">
+
+      <a
+        class="share-button"
+        href="https://wa.me/?text=You're%20cordially%20invited%20to%20our%20Ring%20Ceremony%20💍❤️">
         Share on WhatsApp
       </a>
     </footer>
 
   </main>
+
+  <!-- QR Code Click Timing -->
+  <script>
+    const invitationVideo = document.getElementById("invitationVideo");
+    const qrHotspot = document.getElementById("qrHotspot");
+
+    function updateQRHotspot() {
+      const currentTime = invitationVideo.currentTime;
+
+      if (
+        currentTime >= 4 &&
+        currentTime <= 8 &&
+        !invitationVideo.ended
+      ) {
+        qrHotspot.classList.add("active");
+      } else {
+        qrHotspot.classList.remove("active");
+      }
+    }
+
+    invitationVideo.addEventListener("timeupdate", updateQRHotspot);
+    invitationVideo.addEventListener("seeked", updateQRHotspot);
+    invitationVideo.addEventListener("loadedmetadata", updateQRHotspot);
+    invitationVideo.addEventListener("play", updateQRHotspot);
+    invitationVideo.addEventListener("pause", updateQRHotspot);
+    invitationVideo.addEventListener("ended", updateQRHotspot);
+  </script>
+
 </body>
 </html>
