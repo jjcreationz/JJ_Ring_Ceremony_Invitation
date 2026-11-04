@@ -10,7 +10,7 @@
   <!-- Gold ring favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23fff0b8'/%3E%3Cstop offset='1' stop-color='%23d99a25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='39' r='17' fill='none' stroke='url(%23g)' stroke-width='7'/%3E%3Cpath d='M32 5 42 17 32 27 22 17Z' fill='%23fff0b8' stroke='%23d99a25' stroke-width='2'/%3E%3Cpath d='M22 17h20' stroke='%23d99a25' stroke-width='2'/%3E%3C/svg%3E">
 
-  <!-- WhatsApp preview metadata: following the working J3 approach -->
+  <!-- WhatsApp and social-media preview metadata -->
   <link rel="canonical" href="https://jjcreationz.github.io/JJ_Ring_Ceremony_Invitation/">
 
   <meta property="og:type" content="article">
@@ -52,6 +52,29 @@
       max-width: 720px;
       margin: auto;
       text-align: center;
+    }
+
+    /* GTranslate language selector */
+    .translator-bar {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      min-height: 42px;
+      margin-bottom: 5px;
+      padding: 0 8px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .translator-bar #gt-mordadam-43217984 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .translator-bar select {
+      max-width: 100%;
     }
 
     .top {
@@ -289,6 +312,11 @@
         padding: 18px 12px;
       }
 
+      .translator-bar {
+        padding-right: 4px;
+        margin-bottom: 2px;
+      }
+
       .message {
         padding: 22px 17px;
         font-size: 15px;
@@ -310,6 +338,12 @@
 <body>
   <main class="container">
 
+    <!-- Language Translator -->
+    <div class="translator-bar">
+      <div id="gt-mordadam-43217984"></div>
+    </div>
+
+    <!-- Invitation Heading -->
     <header class="top">
       <div class="ring">💍</div>
       <h1>You're Invited</h1>
@@ -427,15 +461,77 @@
       <br>
 
       <a
-  class="share-button"
-  href="https://wa.me/?text=https%3A%2F%2Fjjcreationz.github.io%2FJJ_Ring_Ceremony_Invitation%2F"
-  target="_blank"
-  rel="noopener noreferrer">
-  Share on WhatsApp
-</a>
+        class="share-button"
+        href="https://wa.me/?text=https%3A%2F%2Fjjcreationz.github.io%2FJJ_Ring_Ceremony_Invitation%2F"
+        target="_blank"
+        rel="noopener noreferrer">
+        Share on WhatsApp
+      </a>
     </footer>
 
   </main>
+
+  <!-- GTranslate Configuration -->
+  <script>
+    window.gtranslateSettings = window.gtranslateSettings || {};
+
+    window.gtranslateSettings['43217984'] = {
+      default_language: "en",
+
+      languages: [
+        // Top Languages
+        "en",
+        "te",
+        "hi",
+
+        // Major World Languages
+        "es",
+        "zh-CN",
+        "ar",
+        "fr",
+        "de",
+        "pt",
+        "ru",
+        "ja",
+        "ko",
+        "it",
+
+        // Other Indian Languages
+        "ta",
+        "kn",
+        "ml",
+        "bn",
+        "mr",
+        "gu",
+        "pa",
+        "ur",
+
+        // Remaining Supported Languages
+        "af","sq","am","fa","ps","hy","az","eu","be","bs","bg",
+        "ca","ceb","ny","zh-TW","co","hr","cs","da","nl","eo",
+        "et","tl","fi","fy","gl","ka","el","ht","ha","haw",
+        "iw","hmn","hu","is","ig","id","ga","jw","kk","km",
+        "ku","ky","lo","la","lv","lt","lb","mk","mg","ms",
+        "mt","mi","mn","my","ne","no","pl","ro","sm","gd",
+        "sr","st","sn","sd","si","sk","sl","so","su","sw",
+        "sv","tg","th","tr","uk","uz","vi","cy","xh","yi",
+        "yo","zu"
+      ],
+
+      wrapper_selector: "#gt-mordadam-43217984",
+      native_language_names: 1,
+      flag_style: "2d",
+      flag_size: 24,
+      horizontal_position: "inline",
+      flags_location: "https://jedidiahjskjournal.github.io/flags/"
+    };
+  </script>
+
+  <!-- GTranslate Script -->
+  <script
+    src="https://jedidiahjskjournal.github.io/js/gt.min.js"
+    data-gt-widget-id="43217984">
+  </script>
 
   <!-- QR Hotspot and Fullscreen Behaviour -->
   <script>
