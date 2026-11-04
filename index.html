@@ -1,10 +1,10 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#42105f">
+  <meta name="theme-color" content="#21083f">
   <meta name="description" content="You're cordially invited to Jedidiah and Neelima's Ring Ceremony on Wednesday, 25 November 2026, at 6:00 P.M. in Hyderabad. Join us for a celebration filled with love, blessings and joy.">
 
   <!-- Gold ring favicon -->
@@ -39,12 +39,41 @@
       padding: 0;
     }
 
+    html {
+      min-height: 100%;
+      background: #21083f !important;
+    }
+
     body {
       font-family: Georgia, serif;
-      background: linear-gradient(145deg, #21083f, #571578, #321052);
+      background: linear-gradient(145deg, #21083f, #571578, #321052) !important;
+      background-color: #21083f !important;
+      background-attachment: fixed !important;
       color: #fff8ed;
       min-height: 100vh;
       padding: 35px 16px;
+      margin-top: 0 !important;
+      top: 0 !important;
+    }
+
+    /* Prevent Google Translate from changing page positioning */
+    body.translated-ltr,
+    body.translated-rtl {
+      margin-top: 0 !important;
+      top: 0 !important;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    iframe.goog-te-banner-frame {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    body > .skiptranslate {
+      display: none !important;
     }
 
     .container {
@@ -65,40 +94,58 @@
       width: auto;
       margin: 0;
       padding: 0;
-      background: transparent;
+      background: transparent !important;
     }
 
-    /* Match J3 Google Translate styling */
     #gt-mordadam-43217984 {
       display: inline-flex;
       align-items: center;
       margin: 0;
       vertical-align: middle;
       flex-shrink: 0;
+      background: transparent !important;
     }
 
-    /* J3 navigation link colour */
-    #gt-mordadam-43217984 a,
-    #gt-mordadam-43217984 a span {
-      color: #571578 !important;
+    /* English selector with gold border */
+    #gt-mordadam-43217984 .gt-current-lang {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px;
+      padding: 5px 9px !important;
+      border: 1px solid #e8aa36 !important;
+      border-radius: 7px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    #gt-mordadam-43217984 .gt-current-lang:hover {
+      border-color: #fff8ed !important;
+      background: #ffffff12 !important;
+    }
+
+    /* Current language text */
+    #gt-mordadam-43217984 .gt-current-lang,
+    #gt-mordadam-43217984 .gt-current-lang span,
+    #gt-mordadam-43217984 .gt-current-lang a {
+      color: #fff8ed !important;
       text-decoration: none !important;
     }
 
-    /* J3 navigation hover colour */
-    #gt-mordadam-43217984 a:hover,
-    #gt-mordadam-43217984 a:hover span {
-      color: #e8aa36 !important;
-    }
-
-    /* Keep dropdown language text consistent with J3 */
+    /* Dropdown language normal appearance */
     #gt-mordadam-43217984 .gt_options a,
     #gt-mordadam-43217984 .gt_options a span {
-      color: #571578 !important;
+      color: #321052 !important;
+      font-weight: 400 !important;
+      text-decoration: none !important;
+      transition: color 0.2s ease;
     }
 
+    /* Dropdown language hover appearance */
     #gt-mordadam-43217984 .gt_options a:hover,
     #gt-mordadam-43217984 .gt_options a:hover span {
-      color: #571578 !important;
+      color: #e8aa36 !important;
+      font-weight: 700 !important;
     }
 
     .top {
@@ -538,7 +585,7 @@
 
   </main>
 
-  <!-- GTranslate Configuration: same ID and configuration as J3 -->
+  <!-- GTranslate Configuration -->
   <script>
     window.gtranslateSettings = window.gtranslateSettings || {};
 
@@ -587,7 +634,7 @@
     };
   </script>
 
-  <!-- Same GTranslate script used by J3 -->
+  <!-- GTranslate script -->
   <script
     src="https://jedidiahjskjournal.github.io/js/gt.min.js"
     data-gt-widget-id="43217984">
@@ -768,3 +815,4 @@
 
 </body>
 </html>
+```
