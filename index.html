@@ -52,25 +52,39 @@
       max-width: 720px;
       margin: auto;
       text-align: center;
+      position: relative;
     }
 
     /* GTranslate language selector */
     .translator-bar {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      min-height: 42px;
-      margin-bottom: 5px;
-      padding: 0 8px;
-      position: relative;
+      position: absolute;
+      top: 0;
+      right: 8px;
       z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      background: transparent;
     }
 
     .translator-bar #gt-mordadam-43217984 {
       display: inline-flex;
       align-items: center;
       justify-content: flex-end;
+      background: transparent !important;
+      color: #ffffff !important;
+    }
+
+    .translator-bar a,
+    .translator-bar span,
+    .translator-bar button,
+    .translator-bar select {
+      color: #ffffff !important;
+      background-color: transparent !important;
     }
 
     .translator-bar select {
@@ -313,8 +327,10 @@
       }
 
       .translator-bar {
-        padding-right: 4px;
-        margin-bottom: 2px;
+        top: 0;
+        right: 4px;
+        padding: 0;
+        margin: 0;
       }
 
       .message {
