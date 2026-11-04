@@ -55,7 +55,7 @@
       position: relative;
     }
 
-    /* Translator placement: same widget structure as J3 */
+    /* Translator placement */
     .translator-bar {
       position: absolute;
       top: 0;
@@ -68,18 +68,36 @@
       background: transparent;
     }
 
+    /* Match J3 Google Translate styling */
     #gt-mordadam-43217984 {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      margin: 0;
       vertical-align: middle;
-      margin-left: 12px;
+      flex-shrink: 0;
     }
 
-    /* Green hover effect for the English selector */
-    #gt-mordadam-43217984 .gt_selected a:hover {
+    /* J3 navigation link colour */
+    #gt-mordadam-43217984 a,
+    #gt-mordadam-43217984 a span {
+      color: #374151 !important;
+      text-decoration: none !important;
+    }
+
+    /* J3 navigation hover colour */
+    #gt-mordadam-43217984 a:hover,
+    #gt-mordadam-43217984 a:hover span {
       color: #16a34a !important;
     }
 
-    #gt-mordadam-43217984 .gt_selected a:hover span {
+    /* Keep dropdown language text consistent with J3 */
+    #gt-mordadam-43217984 .gt_options a,
+    #gt-mordadam-43217984 .gt_options a span {
+      color: #374151 !important;
+    }
+
+    #gt-mordadam-43217984 .gt_options a:hover,
+    #gt-mordadam-43217984 .gt_options a:hover span {
       color: #16a34a !important;
     }
 
@@ -442,9 +460,9 @@
       <p class="date">06:00 P.M. Onwards</p>
 
       <p class="venue">
-        <strong>Metro Pillar No. A 737</strong><br>
-        Srikanya Comfort, 5th Floor,<br>
-        PNR Empire,<br>
+        <strong>Srikanya Comfort,</strong><br>
+        5th Floor, PNR Empire,<br>
+        Metro Pillar No. A 737,<br>
         KPHB, Hyderabad,<br>
         Telangana 500072
       </p>
